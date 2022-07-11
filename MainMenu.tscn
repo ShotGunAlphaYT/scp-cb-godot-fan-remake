@@ -1,0 +1,266 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/sounds/main_menu_theme.mp3" type="AudioStream" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.792157, 0.792157, 0.792157, 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="3D" type="Spatial" parent="."]
+
+[node name="Floor" type="CSGBox" parent="3D"]
+material_override = SubResource( 1 )
+width = 8.91261
+height = 0.0741241
+depth = 9.17047
+
+[node name="Roof" type="CSGBox" parent="3D"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.06056, 0 )
+material_override = SubResource( 1 )
+width = 8.91261
+height = 0.0741241
+depth = 9.17047
+
+[node name="Door" type="CSGBox" parent="3D"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09886, 0, -5.1824 )
+material_override = SubResource( 2 )
+width = 2.17099
+height = 5.57886
+
+[node name="Button" type="CSGBox" parent="3D"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.527681, 1.40768, -5.1824 )
+material_override = SubResource( 2 )
+width = 0.33303
+height = 0.466148
+
+[node name="Button2" type="CSGCylinder" parent="3D"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.517886, 1.45007, -4.46455 )
+material_override = SubResource( 3 )
+radius = 0.13239
+height = 0.694172
+
+[node name="BOTTOMWALL" type="Spatial" parent="3D"]
+
+[node name="CSGBox" type="CSGBox" parent="3D/BOTTOMWALL"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.35545 )
+material_override = SubResource( 4 )
+width = 9.39398
+height = 0.603663
+depth = 0.179121
+
+[node name="CSGBox2" type="CSGBox" parent="3D/BOTTOMWALL"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.43402, 0, 1.44014 )
+material_override = SubResource( 4 )
+width = 5.35324
+height = 0.603663
+depth = 0.179121
+
+[node name="CSGBox3" type="CSGBox" parent="3D/BOTTOMWALL"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0829856, 0, 3.90805 )
+material_override = SubResource( 4 )
+width = 5.35324
+height = 0.603663
+depth = 0.179121
+
+[node name="CSGBox4" type="CSGBox" parent="3D/BOTTOMWALL"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.05911, -9.53674e-07, -1.2008 )
+material_override = SubResource( 4 )
+width = 7.33285
+height = 0.603663
+depth = 0.179121
+
+[node name="CSGBox5" type="CSGBox" parent="3D/BOTTOMWALL"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.36585, 0, -1.09326 )
+material_override = SubResource( 4 )
+width = 12.8838
+height = 0.603663
+depth = 0.179121
+
+[node name="TOPWALL" type="Spatial" parent="3D"]
+
+[node name="CSGBox" type="CSGBox" parent="3D/TOPWALL"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.28093, 1.08237, 0 )
+height = 7.99384
+depth = 11.0232
+
+[node name="CSGBox2" type="CSGBox" parent="3D/TOPWALL"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98646, 1.08237, 0 )
+height = 7.99384
+depth = 11.0232
+
+[node name="CSGBox3" type="CSGBox" parent="3D/TOPWALL"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.301596, 1.08237, -5.33573 )
+height = 7.99384
+depth = 11.0232
+
+[node name="CSGBox4" type="CSGBox" parent="3D/TOPWALL"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.04887, 1.08237, 3.70147 )
+width = 4.58221
+height = 7.99384
+depth = 6.21238
+
+[node name="Camera" type="Camera" parent="3D"]
+transform = Transform( 0.695411, 0, 0.718612, 0, 1, 0, -0.718612, 0, 0.695411, 2.7681, 2.19891, 1.82472 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="3D/Camera"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="3D/Camera"]
+stream = ExtResource( 2 )
+autoplay = true
+
+[node name="2D" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="BG" type="ColorRect" parent="2D"]
+margin_left = -1029.74
+margin_top = 474.408
+margin_right = 385.263
+margin_bottom = 3243.41
+rect_rotation = -29.6652
+color = Color( 0.172549, 0.172549, 0.172549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="2D"]
+margin_left = 24.6942
+margin_top = 16.8369
+margin_right = 109.694
+margin_bottom = 81.8369
+text = "SCP
+Containment
+Breach
+( Fan Remake )"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="2D"]
+margin_left = 144.798
+margin_top = 153.777
+margin_right = 182.798
+margin_bottom = 173.777
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="2D"]
+margin_left = 159.39
+margin_top = 198.676
+margin_right = 199.39
+margin_bottom = 218.676
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MadeBy" type="Label" parent="2D"]
+margin_left = 147.889
+margin_top = 32.0724
+margin_right = 222.889
+margin_bottom = 80.0724
+text = "Made By 
+
+On youtube"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Youtube" type="Button" parent="2D"]
+margin_left = 143.435
+margin_top = 44.5449
+margin_right = 292.435
+margin_bottom = 64.5449
+text = "@The Green Hamster"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayMenu" type="Control" parent="2D"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="2D/PlayMenu"]
+margin_left = 69.0
+margin_top = 290.0
+margin_right = 341.0
+margin_bottom = 586.0
+
+[node name="Label" type="Label" parent="2D/PlayMenu/Panel"]
+margin_left = 101.022
+margin_top = 6.73477
+margin_right = 141.022
+margin_bottom = 20.7348
+text = "Play"
+
+[node name="HSeparator" type="HSeparator" parent="2D/PlayMenu/Panel"]
+margin_left = 1.0
+margin_top = 16.0
+margin_right = 272.0
+margin_bottom = 46.0
+
+[node name="New" type="Button" parent="2D/PlayMenu/Panel"]
+margin_left = 77.4499
+margin_top = 56.1231
+margin_right = 159.45
+margin_bottom = 76.1231
+text = "New Game"
+
+[node name="Load" type="Button" parent="2D/PlayMenu/Panel"]
+margin_left = 75.0
+margin_top = 94.0
+margin_right = 157.0
+margin_bottom = 114.0
+text = "Load Game"
+
+[node name="Multiplayer" type="Button" parent="2D/PlayMenu/Panel"]
+margin_left = 79.6948
+margin_top = 135.818
+margin_right = 163.695
+margin_bottom = 155.818
+disabled = true
+text = "Multiplayer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="2D/PlayMenu/Panel/Multiplayer"]
+margin_left = -4.48981
+margin_top = 29.184
+margin_right = 90.5102
+margin_bottom = 43.184
+text = "Coming Soon..."
+
+[node name="Close" type="Button" parent="2D/PlayMenu/Panel"]
+margin_left = 243.165
+margin_top = 6.29959
+margin_right = 263.165
+margin_bottom = 26.2996
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="2D/Play" to="2D" method="_on_Play_pressed"]
+[connection signal="pressed" from="2D/Quit" to="2D" method="_on_Quit_pressed"]
+[connection signal="pressed" from="2D/Youtube" to="2D" method="_on_Youtube_pressed"]
+[connection signal="pressed" from="2D/PlayMenu/Panel/New" to="2D" method="_on_New_pressed"]
+[connection signal="pressed" from="2D/PlayMenu/Panel/Load" to="2D" method="_on_Load_pressed"]
+[connection signal="pressed" from="2D/PlayMenu/Panel/Multiplayer" to="2D" method="_on_Multiplayer_pressed"]
+[connection signal="pressed" from="2D/PlayMenu/Panel/Close" to="2D" method="_on_Close_pressed"]
